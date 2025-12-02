@@ -6,7 +6,7 @@ import { useAuthStore } from "../store/authStore";
 import { useSettingsStore } from "../store/settingsStore";
 
 export const CreatePostPage = () => {
-  const { token } = useAuthStore();
+  const { token, role  } = useAuthStore();
   const defaultCategory = useSettingsStore((s) => s.defaultCategory);
   const navigate = useNavigate();
 
@@ -19,6 +19,10 @@ export const CreatePostPage = () => {
 
   if (!token) {
     return <Navigate to="/login" replace />;
+  }
+
+  if (role !== "admin") {
+    return <Navigate to="/feed" replace />;
   }
 
   return (

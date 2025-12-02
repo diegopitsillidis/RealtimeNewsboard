@@ -2,7 +2,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 
 export const Navbar = () => {
-  const { token, username, logout } = useAuthStore();
+  const { token, username, role, logout } = useAuthStore();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -24,9 +24,11 @@ export const Navbar = () => {
               <Link to="/feed" className={isActive("/feed")}>
                 Feed
               </Link>
-              <Link to="/create" className={isActive("/create")}>
-                Create
-              </Link>
+              {role === "admin" && (
+                <Link to="/create" className={isActive("/create")}>
+                  Create
+                </Link>
+              )}
               <Link to="/settings" className={isActive("/settings")}>
                 Settings
               </Link>

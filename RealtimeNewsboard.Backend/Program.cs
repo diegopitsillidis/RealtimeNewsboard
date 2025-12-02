@@ -221,7 +221,7 @@ app.MapPost("/posts", async (
 
     return Results.Created($"/posts/{post.Id}", new { post.Id });
 })
-.RequireAuthorization(); // uses JWT auth
+.RequireAuthorization(policy => policy.RequireRole("admin")); // uses JWT auth
 
 app.Map("/ws/posts", async (HttpContext context, PostBroadcaster broadcaster) =>
 {
