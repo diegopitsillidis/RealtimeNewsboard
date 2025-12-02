@@ -1,0 +1,6 @@
+@RealtimeNewsboard.Backend_HostAddress = http://localhost:5105
+
+GET {{RealtimeNewsboard.Backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

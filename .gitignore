@@ -1,0 +1,12 @@
+# VS junk
+.vs/
+**/bin/
+**/obj/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Logs
+*.log
