@@ -53,7 +53,6 @@ export function usePostStream(category?: string, search?: string) {
 
   // 2) WebSocket for new posts (only set up once)
   useEffect(() => {
-    // Use wss:// if your backend is https://, ws:// if http://
     const socket$: WebSocketSubject<IncomingPost> = webSocket({
       url: "wss://localhost:7080/ws/posts",
       deserializer: (e) => JSON.parse(e.data),

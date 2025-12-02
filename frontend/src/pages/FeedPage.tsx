@@ -5,6 +5,7 @@ import { usePostStream } from "../hooks/usePostStream";
 import { useAuthStore } from "../store/authStore";
 import { Navigate } from "react-router-dom";
 import { useSettingsStore } from "../store/settingsStore";
+import { useDebouncedValue } from "../hooks/useDebouncedValue";
 
 export const FeedPage = () => {
   const { token } = useAuthStore();
@@ -15,7 +16,9 @@ export const FeedPage = () => {
   );
   const [search, setSearch] = useState("");
 
-  const { posts, isLoading } = usePostStream(category, search);
+   const debouncedSearch = useDebouncedValue(search, 300);
+
+  const { posts, isLoading } = usePostStream(category, debouncedSearch);
 
   if (!token) {
     return <Navigate to="/login" replace />;
