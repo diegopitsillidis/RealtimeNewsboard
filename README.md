@@ -60,13 +60,13 @@ Two users are seeded into the database for testing/demo purposes:
 | `admin`  | `admin123` | `admin` |
 | `user`   | `user123`  | `user`  |
 
-Use one of these to log in and access the app. Both roles currently have the same permissions (create posts, view feed).
+Use one of these to log in and access the app. Only the **admin** user can create posts. Both users can log in and view the news feed.
 
 ---
 
 ## ⚠ Known Limitations
 
-- **Role-based permissions not enforced** — although users have roles (`admin` / `user`), the app does not differentiate permissions: all authenticated users can create posts.  
+- Role-based permissions are basic — only admins can create posts. Other role-specific features are not implemented.
 - **Language preference not applied** — the settings page lets you choose a language, but UI is not localized.  
 - **No pagination or infinite scroll** — `/posts` returns all posts at once.  
 - **WebSocket server uses in-memory storage** — if restarted, live connections are lost; not suitable for scaled multi-instance deployment.  
